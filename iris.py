@@ -11,3 +11,25 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import SVC
+
+url = "https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"
+names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'class']
+dataset = pandas.read_csv(url, names=names)
+
+print(dataset.shape)
+# prints the top 20 rows
+print(dataset.head(20))
+# summarizes each attribute
+print(dataset.describe())
+# group by class, then count the total of each
+print(dataset.groupby('class').size())
+
+# box and whisker plots
+dataset.plot(kind='box', subplots=True, layout=(2,2), sharex=False, sharey=False)
+plt.show()
+
+dataset.hist()
+plt.show()
+
+scatter_matrix(dataset)
+plt.show()
